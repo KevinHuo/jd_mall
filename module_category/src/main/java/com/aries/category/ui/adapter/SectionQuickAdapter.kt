@@ -11,18 +11,12 @@ import com.aries.common.util.ImageUtils
 
 class SectionQuickAdapter(sectionHeadResId: Int, layoutResId: Int, data: MutableList<CategoryModal> ):
     BaseSectionQuickAdapter<CategoryModal, BaseViewHolder>(sectionHeadResId, layoutResId, data) {
-    private var imageLoader = CoilUtil.getImageLoader()
 
     override fun convertHeader(helper: BaseViewHolder, item: CategoryModal) {
         helper.setText(R.id.textHeader, item.categoryName)
     }
 
     override fun convert(holder: BaseViewHolder, item: CategoryModal) {
-//        holder.getView<ImageView>(R.id.thirdCategoryIcon).load(item.iconUrl, imageLoader ) {
-//            crossfade(true)
-//            placeholder(R.drawable.default_img)
-//            error(R.drawable.default_img)
-//        }
         ImageUtils.load(item.iconUrl, holder.getView<ImageView>(R.id.thirdCategoryIcon))
         holder.setText(R.id.text_content, item.categoryName)
     }

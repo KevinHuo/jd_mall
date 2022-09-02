@@ -11,7 +11,6 @@ import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 
 class BannerAdapter(var data: List<BannerBean>): BannerImageAdapter<BannerBean>(data) {
-    private var imageLoader: ImageLoader = CoilUtil.getImageLoader()
 
     override fun onBindView(
         holder: BannerImageHolder?,
@@ -20,10 +19,6 @@ class BannerAdapter(var data: List<BannerBean>): BannerImageAdapter<BannerBean>(
         size: Int,
     ) {
         holder?.imageView?.scaleType = ImageView.ScaleType.FIT_XY
-//        holder?.imageView?.load(data?.imgUrl, imageLoader) {
-//            crossfade(true)
-//            placeholder(R.drawable.default_img)
-//        }
         ImageUtils.load(data?.imgUrl, holder?.imageView)
     }
 }

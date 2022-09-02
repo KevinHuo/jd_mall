@@ -22,7 +22,6 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.main_right.view.*
 
 class CategoryRightView: FrameLayout {
-    private val imageLoader = CoilUtil.getImageLoader()
     private lateinit var sectionQuickAdapter: SectionQuickAdapter
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var dataCopy: ContentCateResponse
@@ -100,9 +99,6 @@ class CategoryRightView: FrameLayout {
     fun setData(data: ContentCateResponse) {
         dataCopy = data
         topImg.visibility = View.VISIBLE
-//        topImg.load(data.bannerUrl, imageLoader)  {
-//            crossfade(true)
-//        }
         ImageUtils.load(data.bannerUrl, topImg)
         tabLayout.removeAllTabs()
         data.cateList.forEach { v -> tabLayout.addTab(tabLayout.newTab().setText(v.categoryName)) }

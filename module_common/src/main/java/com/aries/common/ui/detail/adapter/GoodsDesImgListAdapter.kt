@@ -12,13 +12,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 class GoodsDesImgListAdapter(@LayoutRes layoutResId: Int, data: MutableList<String>): BaseQuickAdapter<String, BaseViewHolder>(layoutResId, data) {
-    private var imageLoader = CoilUtil.getImageLoader()
 
     override fun convert(holder: BaseViewHolder, url: String) {
-//        holder.getView<ImageView>(R.id.desImg).load(url, imageLoader ) {
-//            crossfade(true)
-//            placeholder(R.drawable.default_img)
-//        }
         ImageUtils.load(url, holder.getView<ImageView>(R.id.desImg))
     }
 }

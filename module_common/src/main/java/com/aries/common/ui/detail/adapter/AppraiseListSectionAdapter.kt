@@ -13,15 +13,8 @@ import kotlinx.android.synthetic.main.activity_detail_des.*
 
 class AppraiseListSectionAdapter(sectionHeadResId: Int, layoutResId: Int, data: MutableList<AppraiseBean> ):
     BaseSectionQuickAdapter<AppraiseBean, BaseViewHolder>(sectionHeadResId, layoutResId, data) {
-    private var imageLoader = CoilUtil.getImageLoader()
-
 
     override fun convertHeader(helper: BaseViewHolder, item: AppraiseBean) {
-//        helper.getView<ImageView>(R.id.commentatorImg).load(item.headerUrl, imageLoader ) {
-//            crossfade(true)
-//            placeholder(R.drawable.default_img)
-//            error(R.drawable.default_img)
-//        }
         ImageUtils.load(item.headerUrl, helper.getView<ImageView>(R.id.commentatorImg))
         helper.setText(R.id.commentatorTxt, item.userName)
         helper.setText(R.id.contentTxt, item.content)
@@ -29,11 +22,6 @@ class AppraiseListSectionAdapter(sectionHeadResId: Int, layoutResId: Int, data: 
     }
 
     override fun convert(holder: BaseViewHolder, item: AppraiseBean) {
-//        holder.getView<ImageView>(R.id.appraiseImg).load(item.url, imageLoader ) {
-//            crossfade(true)
-//            placeholder(R.drawable.default_img)
-//            error(R.drawable.default_img)
-//        }
         ImageUtils.load(item.url, holder.getView<ImageView>(R.id.appraiseImg))
     }
 }

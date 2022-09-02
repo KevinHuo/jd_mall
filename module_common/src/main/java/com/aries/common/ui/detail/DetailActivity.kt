@@ -37,7 +37,6 @@ import kotlinx.android.synthetic.main.detail_header.*
 @Route(path = RouterPaths.GOODS_DETAIL)
 class DetailActivity: BaseActivity(R.layout.activity_detail), MavericksView {
     private val tabs = arrayListOf("商品", "评价", "详情", "推荐")
-    private var imageLoader: ImageLoader = CoilUtil.getImageLoader()
     private val loadingDialog: LoadingDialog by lazy { LoadingDialog(this) }
 
     private var statusBarHeight: Int = 0
@@ -240,9 +239,6 @@ class DetailActivity: BaseActivity(R.layout.activity_detail), MavericksView {
             val list = data.map { v -> TopBanner(v,"") }
             setBannerData(list)
             loadImage { _, _, view, position ->
-//                (view as ImageView).load(data[position], imageLoader) {
-//                    crossfade(true)
-//                }
                 ImageUtils.load(data[position], view as ImageView?)
             }
         }
@@ -260,14 +256,8 @@ class DetailActivity: BaseActivity(R.layout.activity_detail), MavericksView {
 
     private fun showDetailInfo(detailInfo: DetailInfo) {
         hdzqTv.text = "活动专区"
-//        hdzqIv.load(detailInfo.hdzq, imageLoader ) {
-//            crossfade(true)
-//        }
         ImageUtils.load(detailInfo.hdzq, hdzqIv)
         dnyxTv.text = "店内优选"
-//        dnyxIv.load(detailInfo.dnyx, imageLoader ) {
-//            crossfade(true)
-//        }
         ImageUtils.load(detailInfo.dnyx, dnyxIv)
         spjsTv.text = "商品介绍"
         if (detailInfo.introductionList.isNotEmpty()) {

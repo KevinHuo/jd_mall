@@ -17,7 +17,6 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 open class CartGoodsAdapter(data: MutableList<CartBean>): BaseMultiItemQuickAdapter<CartBean, BaseViewHolder>(data) {
-    private var imageLoader = CoilUtil.getImageLoader()
     private var onStepperChangeListener: OnStepperChangeListener? = null
     private var onCartItemChangeListener: OnCartItemChangeListener? = null
 
@@ -33,11 +32,6 @@ open class CartGoodsAdapter(data: MutableList<CartBean>): BaseMultiItemQuickAdap
                 holder.getView<CheckBox>(R.id.storeCheckBox).isChecked = item.check
             }
             2 -> {
-//                holder.getView<ImageView>(R.id.cartGoodsImg).load(item.imgUrl, imageLoader) {
-//                    crossfade(true)
-//                    placeholder(R.drawable.default_img)
-//                    error(R.drawable.default_img)
-//                }
                 ImageUtils.load(item.imgUrl, holder.getView<ImageView>(R.id.cartGoodsImg))
 
                 holder.getView<CheckBox>(R.id.goodsCheckBox).isChecked = item.check
