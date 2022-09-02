@@ -8,6 +8,7 @@ import coil.load
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.aries.common.util.CoilUtil
+import com.aries.common.util.ImageUtils
 import com.aries.main.R
 import com.aries.main.kit.util.ScreenUtil
 
@@ -23,11 +24,12 @@ open class WaterfallListAdapter(layoutResId: Int, data: MutableList<GoodsBean>):
     override fun convert(holder: BaseViewHolder, item: GoodsBean) {
         var height = item.height * imageWidth / item.width
         holder.getView<ImageView>(R.id.waterfall_item_img).layoutParams = LinearLayout.LayoutParams(imageWidth, height)
-        holder.getView<ImageView>(R.id.waterfall_item_img).load(item.thumb, imageLoader ) {
-            crossfade(true)
-            placeholder(R.drawable.default_img)
-            error(R.drawable.default_img)
-        }
+//        holder.getView<ImageView>(R.id.waterfall_item_img).load(item.thumb, imageLoader ) {
+//            crossfade(true)
+//            placeholder(R.drawable.default_img)
+//            error(R.drawable.default_img)
+//        }
+        ImageUtils.load(item.thumb, holder.getView<ImageView>(R.id.waterfall_item_img))
         holder.setText(R.id.waterfall_item_title, item.name)
     }
 }

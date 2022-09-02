@@ -11,6 +11,7 @@ import coil.ImageLoader
 import coil.load
 import android.widget.TextView
 import com.aries.common.util.CoilUtil
+import com.aries.common.util.ImageUtils
 import com.aries.mine.R
 import com.aries.mine.ui.MenuBean
 
@@ -26,11 +27,12 @@ class FiveGridAdapter(var context: Context, var data: MutableList<MenuBean>, var
         }
         var holder = ViewHolder(convertView!!)
         convertView.tag = holder
-        holder.itemView.findViewById<ImageView>(R.id.menuIcon).load(menuBean.menuIcon, imageLoader ) {
-            crossfade(true)
-            placeholder(R.drawable.default_img)
-            error(R.drawable.default_img)
-        }
+//        holder.itemView.findViewById<ImageView>(R.id.menuIcon).load(menuBean.menuIcon, imageLoader ) {
+//            crossfade(true)
+//            placeholder(R.drawable.default_img)
+//            error(R.drawable.default_img)
+//        }
+        ImageUtils.load(menuBean.menuIcon, holder.itemView.findViewById<ImageView>(R.id.menuIcon))
         holder.itemView.findViewById<TextView>(R.id.menuName).text = menuBean.menuName
 
         return convertView!!

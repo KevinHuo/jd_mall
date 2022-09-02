@@ -23,10 +23,7 @@ import com.aries.common.dialog.LoadingDialog
 import com.aries.common.ui.detail.adapter.AppraiseListSectionAdapter
 import com.aries.common.ui.detail.adapter.ColorThumbListAdapter
 import com.aries.common.ui.detail.adapter.GoodsDesImgListAdapter
-import com.aries.common.util.CoilUtil
-import com.aries.common.util.DisplayUtil
-import com.aries.common.util.PixelUtil
-import com.aries.common.util.StatusBarUtil
+import com.aries.common.util.*
 import com.google.android.material.tabs.TabLayout
 import com.gyf.immersionbar.ImmersionBar
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -243,9 +240,10 @@ class DetailActivity: BaseActivity(R.layout.activity_detail), MavericksView {
             val list = data.map { v -> TopBanner(v,"") }
             setBannerData(list)
             loadImage { _, _, view, position ->
-                (view as ImageView).load(data[position], imageLoader) {
-                    crossfade(true)
-                }
+//                (view as ImageView).load(data[position], imageLoader) {
+//                    crossfade(true)
+//                }
+                ImageUtils.load(data[position], view as ImageView?)
             }
         }
     }
@@ -262,13 +260,15 @@ class DetailActivity: BaseActivity(R.layout.activity_detail), MavericksView {
 
     private fun showDetailInfo(detailInfo: DetailInfo) {
         hdzqTv.text = "活动专区"
-        hdzqIv.load(detailInfo.hdzq, imageLoader ) {
-            crossfade(true)
-        }
+//        hdzqIv.load(detailInfo.hdzq, imageLoader ) {
+//            crossfade(true)
+//        }
+        ImageUtils.load(detailInfo.hdzq, hdzqIv)
         dnyxTv.text = "店内优选"
-        dnyxIv.load(detailInfo.dnyx, imageLoader ) {
-            crossfade(true)
-        }
+//        dnyxIv.load(detailInfo.dnyx, imageLoader ) {
+//            crossfade(true)
+//        }
+        ImageUtils.load(detailInfo.dnyx, dnyxIv)
         spjsTv.text = "商品介绍"
         if (detailInfo.introductionList.isNotEmpty()) {
             detailDesLayout.visibility = View.VISIBLE

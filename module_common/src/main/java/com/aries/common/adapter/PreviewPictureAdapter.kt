@@ -3,10 +3,13 @@ package com.aries.common.adapter
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import coil.Coil
 import coil.ImageLoader
 import coil.load
+import com.aries.common.R
+import com.aries.common.util.ImageUtils
 import com.github.chrisbanes.photoview.PhotoView
 
 class PreviewPictureAdapter(private val context: Context, private val urls: List<String>): PagerAdapter() {
@@ -14,9 +17,10 @@ class PreviewPictureAdapter(private val context: Context, private val urls: List
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val photoView = PhotoView(context)
-        photoView.load(urls[position], imageLoader){
-            crossfade(true)
-        }
+//        photoView.load(urls[position], imageLoader){
+//            crossfade(true)
+//        }
+        ImageUtils.load(urls[position], photoView)
         container.addView(photoView)
         return photoView
     }

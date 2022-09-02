@@ -6,6 +6,7 @@ import coil.ImageLoader
 import coil.load
 import com.aries.common.R
 import com.aries.common.util.CoilUtil
+import com.aries.common.util.ImageUtils
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 
@@ -19,9 +20,10 @@ class GoodsImgBannerAdapter(data: List<String>): BannerImageAdapter<String>(data
         return BannerImageHolder(imageView)
     }
     override fun onBindView(holder: BannerImageHolder?, data: kotlin.String?, position: Int, size: Int) {
-        holder?.imageView?.load(data!!, imageLoader ) {
-            crossfade(true)
-            placeholder(R.drawable.default_img)
-        }
+//        holder?.imageView?.load(data!!, imageLoader ) {
+//            crossfade(true)
+//            placeholder(R.drawable.default_img)
+//        }
+        ImageUtils.load(data!!, holder?.imageView)
     }
 }
