@@ -6,6 +6,7 @@ import com.airbnb.mvrx.Mavericks
 import com.airbnb.mvrx.MavericksViewModelConfigFactory
 import com.aries.common.config.ModuleConfig
 import com.aries.common.impl.IBaseApplication
+import com.aries.common.util.ImageUtils
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import kotlin.coroutines.EmptyCoroutineContext
@@ -28,6 +29,8 @@ abstract class BaseApplication : MultiDexApplication(), IBaseApplication {
         )
 
         Mavericks.initialize(this, viewModelConfigFactory)
+
+        ImageUtils.init(this)
     }
 
     private fun initComponent() {

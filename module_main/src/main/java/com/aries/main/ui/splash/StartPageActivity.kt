@@ -1,6 +1,7 @@
 package com.aries.main.ui.splash
 
 import android.app.Activity
+import android.os.Build
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.annotation.Route

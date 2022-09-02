@@ -10,13 +10,13 @@ import com.aries.cart.ui.CartBean
 import com.aries.cart.ui.listener.OnCartItemChangeListener
 import com.aries.cart.ui.listener.OnStepperChangeListener
 import com.aries.common.util.CoilUtil
+import com.aries.common.util.ImageUtils
 import com.aries.common.widget.Stepper
 import com.aries.common.widget.SwipeMenuLayout
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 open class CartGoodsAdapter(data: MutableList<CartBean>): BaseMultiItemQuickAdapter<CartBean, BaseViewHolder>(data) {
-    private var imageLoader = CoilUtil.getImageLoader()
     private var onStepperChangeListener: OnStepperChangeListener? = null
     private var onCartItemChangeListener: OnCartItemChangeListener? = null
 
@@ -32,11 +32,7 @@ open class CartGoodsAdapter(data: MutableList<CartBean>): BaseMultiItemQuickAdap
                 holder.getView<CheckBox>(R.id.storeCheckBox).isChecked = item.check
             }
             2 -> {
-                holder.getView<ImageView>(R.id.cartGoodsImg).load(item.imgUrl, imageLoader) {
-                    crossfade(true)
-                    placeholder(R.drawable.default_img)
-                    error(R.drawable.default_img)
-                }
+                ImageUtils.load(item.imgUrl, holder.getView<ImageView>(R.id.cartGoodsImg))
 
                 holder.getView<CheckBox>(R.id.goodsCheckBox).isChecked = item.check
                 holder.setText(R.id.storeCode, item.storeCode)

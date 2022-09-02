@@ -97,4 +97,6 @@ dependencies {
     testApi 'junit:junit:4.+'
     androidTestApi 'androidx.test.ext:junit:1.1.2'
     androidTestApi 'androidx.test.espresso:espresso-core:3.3.0'
+
+    api files('libs/qndroid-cdnr-1.0.0.jar')
 }

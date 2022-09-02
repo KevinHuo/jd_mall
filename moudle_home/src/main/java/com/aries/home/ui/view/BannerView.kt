@@ -9,6 +9,7 @@ import android.widget.ImageView
 import coil.ImageLoader
 import coil.load
 import com.aries.common.util.CoilUtil
+import com.aries.common.util.ImageUtils
 import com.aries.home.R
 import com.aries.home.ui.BannerBean
 import com.youth.banner.adapter.BannerImageAdapter
@@ -18,7 +19,6 @@ import com.youth.banner.transformer.AlphaPageTransformer
 import kotlinx.android.synthetic.main.home_banner.view.*
 
 class BannerView: FrameLayout {
-    private var imageLoader: ImageLoader = CoilUtil.getImageLoader()
     constructor(context: Context) : this(context, null)
 
     constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
@@ -45,10 +45,7 @@ class BannerView: FrameLayout {
                     return BannerImageHolder(imageView)
                 }
                 override fun onBindView(holder: BannerImageHolder?, data: BannerBean?, position: Int, size: Int) {
-                    holder?.imageView?.load(data?.imgUrl, imageLoader ) {
-                        crossfade(true)
-                        placeholder(R.drawable.default_img)
-                    }
+                    ImageUtils.load(data?.imgUrl, holder?.imageView)
                 }
             }
             indicator = CircleIndicator(this.context)
