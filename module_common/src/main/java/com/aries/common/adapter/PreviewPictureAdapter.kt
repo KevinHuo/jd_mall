@@ -13,13 +13,9 @@ import com.aries.common.util.ImageUtils
 import com.github.chrisbanes.photoview.PhotoView
 
 class PreviewPictureAdapter(private val context: Context, private val urls: List<String>): PagerAdapter() {
-    private var imageLoader: ImageLoader = Coil.imageLoader(context)
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val photoView = PhotoView(context)
-//        photoView.load(urls[position], imageLoader){
-//            crossfade(true)
-//        }
         ImageUtils.load(urls[position], photoView)
         container.addView(photoView)
         return photoView
